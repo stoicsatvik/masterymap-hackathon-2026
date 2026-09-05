@@ -1,2 +1,11 @@
-# masterymap-hackathon-2026
-Hackathon project: an adaptive learning engine using Bayesian mastery estimation to choose the next highest-information question for a student.
+# MasteryMap Hackathon 2026
+
+Bootstrapped by Cosmos Repo Factory.
+
+- Owner: `stoicsatvik`
+- Kind: `project`
+- Mobile stack: Expo SDK 57 + React Native + Expo Router
+- CI: seeded directly by Cosmos Repo Factory
+- EAS: `EXPO_TOKEN` is injected automatically; the first cloud build runs `eas init --force --non-interactive` before starting the build
+
+Factory slug: `masterymap-hackathon-2026`
