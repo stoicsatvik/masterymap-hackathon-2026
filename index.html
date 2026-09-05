@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MasteryMap is an adaptive tutor that uses Bayesian Knowledge Tracing to estimate mastery and choose the next highest-information question." />
+  <title>MasteryMap — adaptive learning that explains its decisions</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="mark">M</span><div><b>MasteryMap</b><small>Bayesian adaptive tutor</small></div></div>
+      <div class="side-section"><p class="eyebrow">LIVE STUDENT MODEL</p><div id="masteryList"></div></div>
+      <div class="side-section model-card">
+        <p class="eyebrow">MODEL</p>
+        <h3>Bayesian Knowledge Tracing</h3>
+        <p>Every answer updates a latent probability of mastery. The next question targets the topic with the most useful uncertainty.</p>
+        <div class="formula">P(L | evidence)</div>
+      </div>
+      <button id="resetBtn" class="subtle full">Reset session</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div><p class="eyebrow">ADAPTIVE SESSION</p><h1>Learn the gaps, not the syllabus.</h1></div><div class="stats"><div><b id="answered">0</b><span>answered</span></div><div><b id="accuracy">—</b><span>accuracy</span></div><div><b id="gain">0%</b><span>mastery gain</span></div></div></header>
+
+      <section class="grid">
+        <article class="question-card">
+          <div class="question-meta"><span id="topicBadge">Topic</span><span id="difficultyBadge">Difficulty</span></div>
+          <p class="eyebrow">NEXT BEST QUESTION</p>
+          <h2 id="questionText">Loading question…</h2>
+          <div id="options" class="options"></div>
+          <div id="feedback" class="feedback hidden"></div>
+          <div class="card-footer"><div><span class="tiny">Your confidence</span><div id="confidence" class="confidence"><button data-c="1">1</button><button data-c="2">2</button><button data-c="3" class="active">3</button><button data-c="4">4</button><button data-c="5">5</button></div></div><button id="nextBtn" class="primary hidden">Choose next question →</button></div>
+        </article>
+
+        <aside class="decision-card">
+          <p class="eyebrow">WHY THE MODEL PICKED THIS</p>
+          <div class="decision-number" id="uncertainty">—</div>
+          <span class="decision-label">uncertainty score</span>
+          <p id="decisionReason">The model is calculating the best next learning move.</p>
+          <div class="mini-metrics"><div><span>Prior mastery</span><b id="priorMastery">—</b></div><div><span>Expected info</span><b id="expectedInfo">—</b></div><div><span>Selection rank</span><b>#1</b></div></div>
+        </aside>
+      </section>
+
+      <section class="lower">
+        <article class="panel">
+          <div class="panel-head"><div><p class="eyebrow">BELIEF UPDATE</p><h3>What changed after each answer</h3></div><button id="exportBtn" class="subtle">Export session JSON</button></div>
+          <div class="belief-chart" id="beliefChart"><div class="empty">Answer a question to create the mastery trajectory.</div></div>
+        </article>
+        <article class="panel history-panel">
+          <p class="eyebrow">SESSION TRACE</p><h3>Model decisions</h3><div id="history" class="history"><div class="empty">No decisions yet.</div></div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
